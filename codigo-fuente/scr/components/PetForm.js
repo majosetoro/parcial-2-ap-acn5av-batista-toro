@@ -14,6 +14,7 @@ const PetForm = () => {
     species: '',
     breed: '',
     age: '',
+    weight: '',
     comments: '',
     disease: false,
     medication: false,
@@ -25,14 +26,15 @@ const PetForm = () => {
   };
 
   const handleSave = () => {
-    const { name, species, breed, age, comments, disease, medication, specialCare } = form;
-    if (name && species && breed && age && comments) {
+    const { name, species, breed, age, weight, comments, disease, medication, specialCare } = form;
+    if (name && species && breed && age && weight && comments) {
       Alert.alert(
         'Mascota registrada',
         `Nombre: ${name}, 
         Especie: ${species}
         \nRaza: ${breed}
         \nEdad: ${age}
+        \nPeso: ${weight}
         \nComentarios: ${comments}
         \nEnfermedad: ${disease ? 'Sí' : 'No'}
         \nMedicamentos: ${medication ? 'Sí' : 'No'}
@@ -105,6 +107,15 @@ const PetForm = () => {
         value={form.age}
         onChangeText={text => handleInputChange('age', text)}
         placeholder="Ej: 2"
+        keyboardType="numeric"
+      />
+
+      <Text style={styles.label}>Peso (kg)*</Text>
+      <TextInput
+        style={styles.input}
+        value={form.weight}
+        onChangeText={text => handleInputChange('weight', text)}
+        placeholder="Ej: 12.5"
         keyboardType="numeric"
       />
 
